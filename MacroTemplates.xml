@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Templates>
+<Template Name="_" Desc="embed _() for gettext()" PrivUnits="gnugettext">
+<![CDATA[_(%SELECTION%|)]]>
+</Template>
+<Template Name="ph" Desc="Procedure Header" InsertPos="2">
+<![CDATA[{-----------------------------------------------------------------------------
+  Procedure: %PROCNAME%
+  Date:      %DAY%-%MONTH%-%YEAR% %HOUR%:%MINUTE%
+  Arguments: %ARGUMENTS%
+  Result:    %RESULT%
+-----------------------------------------------------------------------------}]]>
+</Template>
+<Template Name="uh" Desc="Unit Header" InsertPos="1">
+<![CDATA[{-----------------------------------------------------------------------------
+ Unit Name: %UNIT%
+ Author:    %USER%
+ Date:      %DAY%-%MONTHSHORTNAME%-%YEAR%
+ Purpose:
+ History:
+-----------------------------------------------------------------------------}
+
+]]>
+</Template>
+<Template Name="sd" Desc="Send Debug Message" PrivUnits="DbugIntf">
+<![CDATA[{$IFOPT D+} SendDebug('|'); {$ENDIF}]]>
+</Template>
+<Template Name="sdme" Desc="Send Debug Method Enter/Exit" PrivUnits="DbugIntf" InsertPos="2">
+<![CDATA[  %BEFORE%SendMethodEnter('%METHODCLASS%');
+  try
+    |
+  finally
+    SendMethodExit('%METHODCLASS%');
+  end;
+]]>
+</Template>
+<Template Name="xdoc" Desc="XML Method Documentation">
+<![CDATA[/// <summary>
+/// |
+/// </summary>
+/// %BEGINPARAMLIST%<param name="%PARAMNAME%"></param>
+/// %ENDPARAMLIST%<returns>%RESULT%</returns>]]>
+</Template>
+<Template Name="begin" Desc="Embed begin/end">
+<![CDATA[begin
+  %SELECTION%|
+end;]]>
+</Template>
+<Template Name="tryf" Desc="Embed try/finally">
+<![CDATA[try
+  %SELECTION%|
+finally
+end;]]>
+</Template>
+<Template Name="for" Desc="For loop (basic)">
+<![CDATA[for | := 0 to  do]]>
+</Template>
+<Template Name="fori" Desc="For loop with counter/embedding">
+<![CDATA[for i := 0 to |.Count - 1 do
+begin
+  %SELECTION%
+end;]]>
+</Template>
+<Template Name="while" Desc="Embed while/do/begin/end loop">
+<![CDATA[while | do
+begin
+  %SELECTION%
+end;]]>
+</Template>
+<Template Name="queue" Desc="Wrap the selected code into a TThread.Queue call">
+<![CDATA[TThread.Queue(nil,
+  procedure
+  begin
+    %SELECTION%|
+  end);]]>
+</Template>
+</Templates>
